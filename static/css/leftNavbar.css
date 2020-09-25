@@ -1,0 +1,20 @@
+.accordion {
+    background-color: inherit;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  
+  .panel {
+    box-shadow: 0 0 0 0 !important;
+    /* padding: 0 18px; */
+    display: none;
+    background-color: inherit;
+    overflow: hidden;
+  }

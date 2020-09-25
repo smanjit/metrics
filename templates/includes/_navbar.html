@@ -1,0 +1,31 @@
+<style>
+    .action-link {
+      color: #343a40;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .action-link:hover {
+    color:#007bff;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #e3f2fd;" >
+   {% if session.logged_in %}
+   <a class="" style="font-weight: 200;font-family: sans-serif;"><font weight="3">SAHAYAK, Welcome {{session.username}}</font></a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+   </button>
+            {% else %}
+   <div style="text-align: center"><font class="navbar-brand" style="font-weight: 400;font-family: sans-serif">SAHAYAK</font></div>
+         {% endif %}
+
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+         {% if session.logged_in %}
+         <li><a href="/buddyPoint" class="action-link"><i class="fas fa-hands-helping"></i>Buddy Point</a></li>
+         <li><a href="/needyPoint" class="action-link"><i class="fas fa-people-carry"></i>Needy Point</a></li>
+	<li><a href="/demandForecast" class="action-link"><i class="fas fa-chart-area"></i>Demand Forecast</a></li>
+	<li><a href="/logout" class="action-link"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+         {% endif %}
+      </ul>
+   </div>
+</nav>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Metrics</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+ <!-- Bulma Version 0.8.x-->
+ <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+ <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css">
+ <link rel="stylesheet" type="text/css" href="../static/css/leftNavbar.css">
+
+</head>
+<style>
+         .modalDialog {
+         position: fixed;
+         font-family: Arial, Helvetica, sans-serif;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0;
+         opacity:0;
+         pointer-events: none;
+         padding: 200px 1px 13px 20px;
+         }
+         .modalDialog:target {
+         opacity:1;
+         pointer-events: auto;
+         }
+         .modalDialog > div {
+         width: 270px;
+         position: relative;
+         margin: 5% auto;
+         padding: 1px 1px 13px 20px;
+         background: #fff;
+         border:black 2px solid;
+		 max-height:200px; 
+	     overflow-y:auto;
+         }
+         .hr {
+         display: block;
+         margin-top: 0.5em;
+         margin-bottom: 0.5em;
+         margin-left: auto;
+         margin-right: auto;
+         border-style: inset;
+         border-width: 1px;
+         }
+		 </style>
+<body>
+
+  {% include 'navbar.html' %}
+ <div class="container">
+  <div class="columns">
+   <div class="column is-2 ">
+    {% include 'leftNavbar.html' %}
+   </div>
+   <div class="column is-10">
+   <section>
+      <div class="card">
+       <!-- <div class="card-table"> -->
+        <div class="content" >
+            <div class="card-content">
+			<header >
+			<p align="center"><font size="6px">Readability Metrics
+			</font></p><br/>
+    </a>
+       </header>
+            <form method="post" id='sectionForm'>
+
+                        <div class="field is-horizontal">
+                           <div class="field-label is-normal">
+                              <label class="label">Readability Metrics</label>
+                           </div>
+                           <div class="field-body">
+                              <div class="field">
+                                 <div class="control">
+                                    <textarea class="textarea" name="poem" placeholder="poem"></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                           <div class="field is-horizontal">
+                              <div class="field-label">
+                              </div>
+                              <div class="field-body">
+                                 <div class="field">
+                                    <div class="control">
+                                       <input style="background-color: #1F70C1;" type="submit" class="button is-small is-primary" value="Submit">
+                                    </div>
+                                 </div>
+                              </div>
+                            </div>
+			</form>
+		  {% if metrics %}
+           <table class="table table-bordered" id="eventTable" style="margin-left:65px; width:92%">
+              <tbody>
+                <tr>
+                    <th><font size="3px">Content</font></th>
+                    <th><font size="3px">Reading Ease</font></th>
+                    <th><font size="3px">Flesch Kincaid Grade</font></th>
+                    <th><font size="3px">Dale Chall Readability Score</font></th>
+                    <th><font size="3px">Gunning Fog Index</font></th>
+                  </tr>
+
+             <tr>
+
+									<td style="border-bottom: 1px solid grey;" width="16%">
+                                    <!-- Trigger/Open the Modal -->
+                                    <a href="#openModal">Click here</a>
+                                    <div id="openModal" class="modalDialog">
+                                       <div style="border = 1px;">
+                                          <h1><font size="3px"/></font></h1>
+                                          <span ><b>Hypothesis</b></span>
+                                          <a href="#close" title="Close" class="close" style="color:black;padding-left:10px">X</a>
+                                          <hr class="hr">
+                                          <p>{{line}}<br>
+                                          </P>
+                                       </div>
+                                    </div>
+                                 </td>
+
+                      <td style="border-bottom: 1px solid grey;" width="16%">{{fre}}</td>
+                      <td style="border-bottom: 1px solid grey;" width="20%">{{fkg}}</td>
+                      <td style="border-bottom: 1px solid grey;" width="30%">{{dcr}}</td>
+                      <td style="border-bottom: 1px solid grey;" width="20%">{{gf}}</td>
+                  </tr>
+              </tbody>
+          </table>
+		              
+		  <div style="padding-left:90%">
+		  <form method="post" action="/download">
+		    <button class="button is-small is-primary" style="background: #1F70C1;color: white;" type="submit"> Download </button>
+			</form>
+			</div>
+			           
+       {% endif %}
+          </div>
+
+		
+
+        </div>
+	   </section>
+<div>
+</div>
+        </div>
+       </div>
+      </div>
+   </div>
+  </div>
+ </div>
+ <script async type="text/javascript" src="../static/js/bulma.js"></script>
+ <script async type="text/javascript" src="../static/js/leftNavbar.js"></script>
+</body>
+
+
+</html>
